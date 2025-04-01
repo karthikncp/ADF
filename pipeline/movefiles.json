@@ -13,6 +13,9 @@
 			},
 			"db_output": {
 				"type": "string"
+			},
+			"db_archieve": {
+				"type": "string"
 			}
 		},
 		"folder": {
