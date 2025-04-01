@@ -114,19 +114,24 @@
 		],
 		"parameters": {
 			"db_container": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "mydataspark"
 			},
 			"db_input": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "mydataspark/input"
 			},
 			"db_filename": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "SalesLTCustomer.txt"
 			},
 			"db_output": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "mydataspark/output"
 			},
 			"db_archieve": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "mydataspark/archieve"
 			}
 		},
 		"folder": {
