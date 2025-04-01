@@ -214,7 +214,7 @@
 								"type": "Expression"
 							},
 							"pp_filename": {
-								"value": "@pipeline().parameters.db_output",
+								"value": "@pipeline().parameters.db_filename",
 								"type": "Expression"
 							}
 						}
