@@ -1,0 +1,23 @@
+{
+	"name": "movefiles",
+	"properties": {
+		"parameters": {
+			"db_container": {
+				"type": "string"
+			},
+			"db_input": {
+				"type": "string"
+			},
+			"db_filename": {
+				"type": "string"
+			},
+			"db_output": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "project1"
+		},
+		"annotations": []
+	}
+}
