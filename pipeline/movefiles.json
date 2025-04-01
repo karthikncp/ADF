@@ -219,6 +219,12 @@
 							}
 						}
 					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "AzureDataLakeStorage1",
+							"type": "LinkedServiceReference"
+						}
+					},
 					"enableLogging": true,
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
@@ -235,7 +241,7 @@
 			},
 			"db_input": {
 				"type": "string",
-				"defaultValue": "mydataspark/input"
+				"defaultValue": "\\input"
 			},
 			"db_filename": {
 				"type": "string",
@@ -243,11 +249,11 @@
 			},
 			"db_output": {
 				"type": "string",
-				"defaultValue": "mydataspark/output"
+				"defaultValue": "\\output"
 			},
 			"db_archieve": {
 				"type": "string",
-				"defaultValue": "mydataspark/archieve"
+				"defaultValue": "\\archieve"
 			}
 		},
 		"folder": {
