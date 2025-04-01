@@ -180,6 +180,52 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "Delete1",
+				"type": "Delete",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference",
+						"parameters": {
+							"pp_container": {
+								"value": "@pipeline().parameters.db_container",
+								"type": "Expression"
+							},
+							"pp_dir": {
+								"value": "@pipeline().parameters.db_output",
+								"type": "Expression"
+							},
+							"pp_filename": {
+								"value": "@pipeline().parameters.db_output",
+								"type": "Expression"
+							}
+						}
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
 			}
 		],
 		"parameters": {
