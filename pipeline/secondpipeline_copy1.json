@@ -1,0 +1,114 @@
+{
+	"name": "secondpipeline_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Getmetadata",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems",
+						"itemName",
+						"itemType"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 2,
+					"activities": [
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "movefiles",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"db_container": {
+										"value": "@pipeline().parameters.pp_conatiner",
+										"type": "Expression"
+									},
+									"db_input": {
+										"value": "@pipeline().parameters.pp_input",
+										"type": "Expression"
+									},
+									"db_filename": {
+										"value": "@item().name",
+										"type": "Expression"
+									},
+									"db_output": {
+										"value": "@pipeline().parameters.pp_output",
+										"type": "Expression"
+									},
+									"db_archieve": "archieve"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"pp_conatiner": {
+				"type": "string",
+				"defaultValue": "mydataspark"
+			},
+			"pp_input": {
+				"type": "string",
+				"defaultValue": "input"
+			},
+			"pp_output": {
+				"type": "string",
+				"defaultValue": "output"
+			}
+		},
+		"folder": {
+			"name": "project1"
+		},
+		"annotations": []
+	}
+}
