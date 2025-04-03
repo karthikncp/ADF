@@ -108,6 +108,10 @@
 					"items": {
 						"value": "@activity('Get Metadata1').output.childItems",
 						"type": "Expression"
+					},
+					"condition": {
+						"value": "@endswith(item().name,'txt')",
+						"type": "Expression"
 					}
 				}
 			}
