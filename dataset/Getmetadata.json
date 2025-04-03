@@ -5,17 +5,6 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"pp_container": {
-				"type": "string"
-			},
-			"pp_dir": {
-				"type": "string"
-			},
-			"pp_filename": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

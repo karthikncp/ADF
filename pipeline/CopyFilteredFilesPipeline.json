@@ -54,7 +54,7 @@
 					"batchCount": 2,
 					"activities": [
 						{
-							"name": "Switch1",
+							"name": "switch",
 							"type": "Switch",
 							"dependsOn": [],
 							"userProperties": [],
