@@ -17,7 +17,21 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "Getmetadata",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"pp_container": {
+								"value": "@pipeline().parameters.pp_conatiner",
+								"type": "Expression"
+							},
+							"pp_input": {
+								"value": "@pipeline().parameters.pp_input",
+								"type": "Expression"
+							},
+							"pp_output": {
+								"value": "@pipeline().parameters.pp_output",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"childItems",

@@ -14,9 +14,6 @@
 			},
 			"pp_output": {
 				"type": "string"
-			},
-			"pp_filename": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
