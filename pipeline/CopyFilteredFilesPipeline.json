@@ -246,7 +246,10 @@
 																"value": "@pipeline().parameters.pp_conatiner",
 																"type": "Expression"
 															},
-															"pp_dir": "output\\csv",
+															"pp_dir": {
+																"value": "@pipeline().parameters.pp_output",
+																"type": "Expression"
+															},
 															"pp_filename": {
 																"value": "item().name",
 																"type": "Expression"
