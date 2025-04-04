@@ -16,31 +16,26 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Getmetadata",
+						"referenceName": "DelimitedText1",
 						"type": "DatasetReference",
 						"parameters": {
 							"pp_container": {
 								"value": "@pipeline().parameters.pp_conatiner",
 								"type": "Expression"
 							},
-							"pp_input": {
+							"pp_dir": {
 								"value": "@pipeline().parameters.pp_input",
 								"type": "Expression"
 							},
-							"pp_output": {
-								"value": "@pipeline().parameters.pp_output",
+							"pp_filename": {
+								"value": "@pipeline().parameters.pp_input",
 								"type": "Expression"
 							}
 						}
 					},
-					"fieldList": [
-						"childItems",
-						"itemName",
-						"itemType"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
-						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
