@@ -78,7 +78,7 @@
 								},
 								"cases": [
 									{
-										"value": ".txt",
+										"value": "txt",
 										"activities": [
 											{
 												"name": "Copy data1",
@@ -166,7 +166,7 @@
 										]
 									},
 									{
-										"value": ".csv",
+										"value": "csv",
 										"activities": [
 											{
 												"name": "Copy data2",
