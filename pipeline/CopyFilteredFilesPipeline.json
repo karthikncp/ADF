@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata1",
+				"name": "Get Metadata2",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -16,18 +16,18 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Getmetadata",
+						"referenceName": "getmetadata2",
 						"type": "DatasetReference",
 						"parameters": {
-							"pp_container": {
+							"dp_container": {
 								"value": "@pipeline().parameters.pp_conatiner",
 								"type": "Expression"
 							},
-							"pp_input": {
+							"dp_input": {
 								"value": "@pipeline().parameters.pp_input",
 								"type": "Expression"
 							},
-							"pp_output": {
+							"dp_output": {
 								"value": "@pipeline().parameters.pp_output",
 								"type": "Expression"
 							}
@@ -52,7 +52,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1",
+						"activity": "Get Metadata2",
 						"dependencyConditions": [
 							"Succeeded"
 						]
