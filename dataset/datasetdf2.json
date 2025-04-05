@@ -14,7 +14,7 @@
 				"folderPath": "input",
 				"fileSystem": "mydataspark"
 			},
-			"columnDelimiter": "\t",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
