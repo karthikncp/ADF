@@ -5,12 +5,26 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"db_container": {
+				"type": "string"
+			},
+			"db_input": {
+				"type": "string"
+			},
+			"db_output": {
+				"type": "string"
+			},
+			"db_filename": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "sales1_output.csv",
+				"fileName": "sales1.csv",
 				"folderPath": "output",
 				"fileSystem": "mydataspark"
 			},
