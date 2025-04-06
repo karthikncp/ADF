@@ -63,14 +63,30 @@
 							"db_output": {
 								"value": "@pipeline().parameters.pp_output",
 								"type": "Expression"
-							}
+							},
+							"db_filename": "Sales1.csv"
 						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "datasetpractice",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"db_container": {
+								"value": "@pipeline().parameters.pp_container",
+								"type": "Expression"
+							},
+							"db_input": {
+								"value": "@pipeline().parameters.pp_input",
+								"type": "Expression"
+							},
+							"db_output": {
+								"value": "@pipeline().parameters.pp_output",
+								"type": "Expression"
+							},
+							"db_filename": "Sales1.csv"
+						}
 					}
 				]
 			}
