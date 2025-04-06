@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "sales1_output.csv",
 				"folderPath": "output",
 				"fileSystem": "mydataspark"
 			},
