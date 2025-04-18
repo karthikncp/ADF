@@ -5,17 +5,6 @@
 			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"ds_container": {
-				"type": "string"
-			},
-			"ds_folder": {
-				"type": "string"
-			},
-			"ds_filename": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],

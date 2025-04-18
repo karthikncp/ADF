@@ -17,26 +17,13 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select * from [dbo].[control_table] where Project_names='Sales'",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "AzureSqlTable2",
-						"type": "DatasetReference",
-						"parameters": {
-							"ds_container": {
-								"value": "@split(pipeline().parameters.ds_container,'/')[0]",
-								"type": "Expression"
-							},
-							"ds_folder": {
-								"value": "@split(pipeline().parameters.ds_folder,'/')[1]",
-								"type": "Expression"
-							},
-							"ds_filename": {
-								"value": "@split(pipeline().parameters.ds_filename,'/')[0]",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
 				}
@@ -111,17 +98,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"ds_container": {
-				"type": "String"
-			},
-			"ds_filename": {
-				"type": "String"
-			},
-			"ds_folder": {
-				"type": "String"
-			}
-		},
 		"annotations": []
 	}
 }
