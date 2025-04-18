@@ -22,22 +22,31 @@
 					},
 					"dataset": {
 						"referenceName": "AzureSqlTable2",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_container": {
+								"value": "@split(pipeline().parameters.ds_container,'/')[0]",
+								"type": "Expression"
+							},
+							"ds_folder": {
+								"value": "@split(pipeline().parameters.ds_folder,'/')[1]",
+								"type": "Expression"
+							},
+							"ds_filename": {
+								"value": "@split(pipeline().parameters.ds_filename,'/')[0]",
+								"type": "Expression"
+							}
+						}
 					},
-					"firstRowOnly": true
+					"firstRowOnly": false
 				}
 			},
 			{
 				"name": "Get Metadata1",
 				"type": "GetMetadata",
-				"dependsOn": [
-					{
-						"activity": "paramlookup",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -59,6 +68,8 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Get Metadata1",
@@ -100,6 +111,17 @@
 				}
 			}
 		],
+		"parameters": {
+			"ds_container": {
+				"type": "String"
+			},
+			"ds_filename": {
+				"type": "String"
+			},
+			"ds_folder": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
