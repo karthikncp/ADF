@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
+				"name": "paramlookup",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -32,7 +32,7 @@
 				"type": "GetMetadata",
 				"dependsOn": [
 					{
-						"activity": "Lookup1",
+						"activity": "paramlookup",
 						"dependencyConditions": [
 							"Succeeded"
 						]
