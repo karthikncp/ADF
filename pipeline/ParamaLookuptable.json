@@ -103,6 +103,10 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
+								"expression": {
+									"value": "@activity('Get Metadata1').output.exists",
+									"type": "Expression"
+								},
 								"ifTrueActivities": [
 									{
 										"name": "Copy data1",
@@ -117,7 +121,113 @@
 										},
 										"userProperties": [],
 										"typeProperties": {
-											"enableStaging": false
+											"source": {
+												"type": "DelimitedTextSource",
+												"storeSettings": {
+													"type": "AzureBlobFSReadSettings",
+													"recursive": true,
+													"enablePartitionDiscovery": false
+												},
+												"formatSettings": {
+													"type": "DelimitedTextReadSettings"
+												}
+											},
+											"sink": {
+												"type": "DelimitedTextSink",
+												"storeSettings": {
+													"type": "AzureBlobFSWriteSettings"
+												},
+												"formatSettings": {
+													"type": "DelimitedTextWriteSettings",
+													"quoteAllText": true,
+													"fileExtension": ".txt"
+												}
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "lookupdataset",
+												"type": "DatasetReference",
+												"parameters": {
+													"ds_container": {
+														"value": "@split(item().source_dir,'/')[0]",
+														"type": "Expression"
+													},
+													"ds_folder": {
+														"value": "@split(item().source_dir,'/')[1]",
+														"type": "Expression"
+													},
+													"ds_filename": {
+														"value": "@item().file_name",
+														"type": "Expression"
+													}
+												}
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "lookupdataset",
+												"type": "DatasetReference",
+												"parameters": {
+													"ds_container": {
+														"value": "@split(item().target_dir,'/')[0]",
+														"type": "Expression"
+													},
+													"ds_folder": {
+														"value": "@split(item().target_dir,'/')[1]",
+														"type": "Expression"
+													},
+													"ds_filename": {
+														"value": "@item().file_name",
+														"type": "Expression"
+													}
+												}
+											}
+										]
+									},
+									{
+										"name": "Script1",
+										"type": "Script",
+										"dependsOn": [
+											{
+												"activity": "Copy data1",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"linkedServiceName": {
+											"referenceName": "AzureSqlDatabase1",
+											"type": "LinkedServiceReference"
+										},
+										"typeProperties": {
+											"scripts": [
+												{
+													"type": "Query",
+													"text": {
+														"value": "@concat(\n    'INSERT INTO [dbo].[audit_log] VALUES (',\n    item().id, ', ',\n    '''',string('success'), '''', ', ',\n    '''', formatDateTime(utcNow(), 'yyyy-MM-dd HH:mm:ss'), '''',\n    ')'\n)",
+														"type": "Expression"
+													}
+												}
+											],
+											"scriptBlockExecutionTimeout": "02:00:00"
 										}
 									}
 								]
