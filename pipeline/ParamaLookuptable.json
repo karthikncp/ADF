@@ -82,8 +82,17 @@
 								"secureInput": false
 							},
 							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase1",
+								"type": "LinkedServiceReference"
+							},
 							"typeProperties": {
-								"scripts": [],
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "SELECT * FROM [dbo].[audit_log]"
+									}
+								],
 								"scriptBlockExecutionTimeout": "02:00:00"
 							}
 						}
