@@ -1,0 +1,9 @@
+{
+	"name": "myadfncp",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e6f82cf3-cb7c-4e72-ad28-e5ed4496785c",
+		"tenantId": "fba69bee-cfa3-4cea-8d86-bf294495f0a7"
+	}
+}
