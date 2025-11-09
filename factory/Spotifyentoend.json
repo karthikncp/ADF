@@ -1,0 +1,9 @@
+{
+	"name": "Spotifyentoend",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e972ba9d-518e-467a-a40d-c86096a704e5",
+		"tenantId": "9d0a1761-37e8-409e-9a39-0b20fa3d5c9d"
+	}
+}
